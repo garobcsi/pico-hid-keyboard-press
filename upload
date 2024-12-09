@@ -4,13 +4,9 @@ file=keyboard
 
 mkdir -p build
 cd build
-cmake ..
+cmake .. -DPICO_PLATFORM=rp2040 -DPICO_BOARD=pico -Wno-dev
 make ${file}
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	cp src/${file}.uf2 /Volumes/RPI-RP2
-else
-	cp src/${file}.uf2 /media/$USER/RPI-RP2
-fi
+cp src/${file}.uf2 /run/media/$USER/RPI-RP2
 
 cd ..
